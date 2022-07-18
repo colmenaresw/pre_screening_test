@@ -1,4 +1,4 @@
-# pre_screening_test
+# A pre-screening Test
 A test program to test programming skills like: OOP, Unit Testing.
 
 ## Task
