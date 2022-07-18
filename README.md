@@ -19,3 +19,10 @@ The first date has been reached! (20.05.2022 - 15:00)
 The second date has been reached! (21.05.2022 - 12:00)
 The third date was reached! (22.05.2022 - 07:00)
 ```
+
+### files
+
+pre_screening.py: the main file of the program, perform the task.
+test_unit.py: the unit test script.
+ordinal_numbers.py: an script that allows to change regular numbers into spelled ordinal ones.
+
