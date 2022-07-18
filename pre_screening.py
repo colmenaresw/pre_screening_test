@@ -3,10 +3,12 @@
     Program that allows the user to enter a date and time, whereupon 
     a simple message will be displayed at that time. 
 """ 
+from math import inf
 import time
 import ordinal_numbers as on
 import logging
 import re
+import datetime
 
 #########################  we create a logger for errors
 logging.basicConfig(filename=r"./error.log", level=logging.DEBUG)
@@ -30,6 +32,8 @@ class Time:
         self.year = date_time[6:10]
         self.hour = time_time[0:2]
         self.minute = time_time[3:5]
+        self.dt = datetime.datetime(int(self.year),int(self.month),int(self.day),int(self.hour), \
+                                    int(self.minute))  # the time of the object
         self.DAYS_PER_MONTH = {
                             1 : 31,
                             2 : 28,
@@ -65,14 +69,26 @@ class Time:
                             return True
         return False
 
-
-
     def isLeapyear(self):
         """ here we check if the year is leap (633 days)"""
         if int(self.year) % 4 == 0 and int(self.year) % 100 != 0 or int(self.year) % 400 == 0 :
             return True
         return False
 
+    def timeToSeconds(self):
+        """
+            a function to make our time seconds
+        """
+        et = datetime.datetime(1970,1,1)  # the epoch time
+        delta = (self.dt-et)
+        return delta.total_seconds()
+
+    def waitingTime(self):
+        """
+            here we calculate how much time do we need to wait
+        """
+        delta = self.dt - datetime.datetime.now()
+        return delta.total_seconds()
 
     def __str__(self) -> str:
         return self.day + "." + self.month + "." + self.year + " - " + \
@@ -112,6 +128,19 @@ def checkFormat(d, t):
         return True
 
 
+def sortTimes(array_of_times):
+    """
+        here we get an array with the right order of the dates, from soonest to latest
+    """
+    array_of_s = []  # here we transform the dates to seconds
+    for eachTime in array_of_times:
+        array_of_s.append(eachTime.timeToSeconds())
+
+    # we build the array with the order we want
+    order = [i[0] for i in sorted(enumerate(array_of_s), key = lambda x:x[1])]
+
+    return order
+
 
 ######################### the main program #########################
 def main():
@@ -142,12 +171,18 @@ def main():
 
     print("thank you very much, we will notify them!\n...")
 
+    sorted_dates = sortTimes(list_of_date)
+
     for i in range(how_many_data):  # we print the date previously input
-        time.sleep(1)
-        print(f"the {on.num2ordinal(i+1)} date has been reached: {list_of_date[i]}")
+        waiting_time = list_of_date[sorted_dates[i]].waitingTime()  # we calculate how much do we wait for each date
+        if waiting_time <= 0:  # if the date is in the past
+            print(f"the {on.num2ordinal(i+1)} date has already been reached: {list_of_date[sorted_dates[i]]}")
+        else:
+            time.sleep(waiting_time)
+            print(f"the {on.num2ordinal(i+1)} date has been reached: {list_of_date[sorted_dates[i]]}")
 
 
 
 if __name__ == "__main__":
     main()
-    print("done")
+    print("\ndone")
