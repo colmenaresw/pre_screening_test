@@ -4,10 +4,7 @@ A test program to test programming skills like: OOP, Unit Testing.
 ## Task
 Write a program in any programming language that allows the user to enter a date and time, whereupon a simple message will be displayed at that time. 
 Write meaningful unit tests for the program. 
-Create the program as a public Git repository at GitHub.com. 
-Then send the link to the Git repository to: yannick.kupferschmidt@easymedbox.de  
-If you have any questions, you can also contact this mail address.
-
+###
 Example program flow
 How much data do you want to enter? 	3
 Please enter a date: 20.05.2022 
