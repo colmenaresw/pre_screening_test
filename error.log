@@ -1,0 +1,23 @@
+ERROR:root:invalid literal for int() with base 10: '12.01.2024'
+ERROR:root:time did not pass validation
+ERROR:root:time did not pass validation
+ERROR:root:time did not pass validation
+ERROR:root:date with incorrect format 
+ERROR:root:time with incorrect format 9:30
+ERROR:root:date with incorrect format 213
+ERROR:root:date with incorrect format 13:00
+ERROR:root:date with incorrect format 13:00
+ERROR:root:time with incorrect format 133.11
+ERROR:root:date with incorrect format 1.1.1992
+ERROR:root:date with incorrect format 1.1.1992
+ERROR:root:date with incorrect format 1.1.1992
+ERROR:root:date with incorrect format 1.1.1992
+ERROR:root:time with incorrect format 1.11
+ERROR:root:date with incorrect format 1.1.1992
+ERROR:root:time with incorrect format 1:00pm
+ERROR:root:date with incorrect format 1.1.1992
+ERROR:root:time with incorrect format 1:00pm
+ERROR:root:date with incorrect format 1.1.1992
+ERROR:root:time with incorrect format 1:00pm
+ERROR:root:date with incorrect format 1.1.1992
+ERROR:root:time with incorrect format 1:00pm
